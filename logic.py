@@ -13,11 +13,11 @@ def classify_risk(cva, cad, ef, diabetes, egfr):
         return "High Risk: CKD"
     return "Low Risk"
 
-def get_contraindications(cr, k, pr, dry_cough, uric_acid):
+def get_contraindications(creatinine, potassium, pulse, dry_cough, uric_acid):
     contraindications = []
-    if cr > 2.5 or k > 5.5:
-        contraindications.extend(["ACE inhibitors (A1)", "ARBs (A2)", "MRAs (D3)"])
-    if pr < 60:
+    if creatinine > 2.5 or potassium > 5.5:
+        contraindications += ["ACE inhibitors (A1)", "ARBs (A2)", "MRAs (D3)"]
+    if pulse < 60:
         contraindications.append("Beta-blockers (B)")
     if dry_cough:
         contraindications.append("ACE inhibitors (A1)")
